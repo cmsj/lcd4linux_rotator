@@ -1,3 +1,4 @@
+
 #lcd4linux rotator
 ##by Chris Jones <cmsj@tenshu.net>
 Released under the GNU GPL v2 only. All Rights Reserved.
@@ -10,21 +11,21 @@ of information (e.g. cycle through 5 disks to show their usage).
 To achieve this, you should call this plugin roughly in this
 fashion in your lcd4linux.conf:
 
-      Widget LabelAllDisks {
-          class 'Text'
-          update 1000
-          width 4
-          expression python::exec('lcd4linux_rotator', 'main', 'AllDisks key root=/,md0=/data,home=/home)
-      }
-      Widget BarAllDisks {
-          class 'Bar'
-          update 1000
-          length 16
-          direction 'E'
-          min 0
-          max 100
-          expression path=python::exec('lcd4linux_rotator', 'main', 'AllDisks value') ; ((statfs(path, 'blocks') - statfs(path, 'bavail')) / statfs(path, 'blocks'))*100
-      }
+    Widget LabelAllDisks {
+        class 'Text'
+        update 1000
+        width 4
+        expression python::exec('lcd4linux_rotator', 'main', 'AllDisks key root=/,md0=/data,home=/home)
+    }
+    Widget BarAllDisks {
+        class 'Bar'
+        update 1000
+        length 16
+        direction 'E'
+        min 0
+        max 100
+        expression path=python::exec('lcd4linux_rotator', 'main', 'AllDisks value') ; ((statfs(path, 'blocks') - statfs(path, 'bavail')) / statfs(path, 'blocks'))*100
+    }
 
 Now let's explain what that all meant.
 
@@ -44,6 +45,8 @@ will get the keys, if you are the 'value' kind you will get the values.
 
 KEY=VALUE - These are the keys and values mentioned previously. The key is
 the string to the left of the = and the value is the string to the right.
+Note that you don't have to specify all the keys/values for both of the places
+you use this class, but if you do specify them twice they *must* be identical.
 
 
 So what will happen in this example is that each second, lcd4linux will
@@ -51,5 +54,3 @@ update both of these widgets and the label will show "root" first, then
 "md0" a second later, then "home" a second later.
 Meanwhile the bar widget will represent the percentage of disk space used
 on "/" at first, then "/data" a second later, then "/home" a second later.
-(The bar widget is calling out to this module to get the path it should be 
-checking, and then using lcd4linux's built in 'statfs' plugin to calculate the disk usage)
