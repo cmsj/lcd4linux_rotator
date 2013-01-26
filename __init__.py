@@ -34,7 +34,7 @@ class Rotator(borg.Borg):
             direction 'E'
             min 0
             max 100
-            expression path=python::exec('lcd4linux_rotator', 'main', 'AllDisks value')
+            expression path=python::exec('lcd4linux_rotator', 'main', 'AllDisks value') ; ((statfs(path, 'blocks') - statfs(path, 'bavail')) / statfs(path, 'blocks'))*100
         }
 
     Now let's explain what that all meant.

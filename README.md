@@ -18,7 +18,7 @@ fashion in your lcd4linux.conf:
           direction 'E'
           min 0
           max 100
-          expression path=python::exec('lcd4linux_rotator', 'main', 'AllDisks value')
+          expression path=python::exec('lcd4linux_rotator', 'main', 'AllDisks value') ; ((statfs(path, 'blocks') - statfs(path, 'bavail')) / statfs(path, 'blocks'))*100
       }
 
 Now let's explain what that all meant.
@@ -46,4 +46,5 @@ update both of these widgets and the label will show "root" first, then
 "md0" a second later, then "home" a second later.
 Meanwhile the bar widget will represent the percentage of disk space used
 on "/" at first, then "/data" a second later, then "/home" a second later.
-
+(The bar widget is calling out to this module to get the path it should be 
+checking, and then using lcd4linux's built in 'statfs' plugin to calculate the disk usage)
