@@ -5,21 +5,21 @@ of information (e.g. cycle through 5 disks to show their usage).
 To achieve this, you should call this plugin roughly in this
 fashion in your lcd4linux.conf:
 
-  Widget LabelAllDisks {
-      class 'Text'
-      update 1000
-      width 4
-      expression python::exec('string_rotate', 'main', 'AllDisks key root=/,md0=/data,home=/home)
-  }
-  Widget BarAllDisks {
-      class 'Bar'
-      update 1000
-      length 16
-      direction 'E'
-      min 0
-      max 100
-      expression path=python::exec('string_rotate', 'main', 'AllDisks value')
-  }
+      Widget LabelAllDisks {
+          class 'Text'
+          update 1000
+          width 4
+          expression python::exec('string_rotate', 'main', 'AllDisks key root=/,md0=/data,home=/home)
+      }
+      Widget BarAllDisks {
+          class 'Bar'
+          update 1000
+          length 16
+          direction 'E'
+          min 0
+          max 100
+          expression path=python::exec('string_rotate', 'main', 'AllDisks value')
+      }
 
 Now let's explain what that all meant.
 
