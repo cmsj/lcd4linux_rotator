@@ -1,5 +1,9 @@
 lcd4linux rotator
 =================
+by Chris Jones <cmsj@tenshu.net>
+--------------------------------
+Released under the GNU GPL v2 only. All Rights Reserved.
+--------------------------------------------------------
 
 This is a class for use with lcd4linux. Its task is simple.
 You want a Bar Widget to alternate between multiple sources
