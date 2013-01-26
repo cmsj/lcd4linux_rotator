@@ -1,3 +1,6 @@
+lcd4linux rotator
+=================
+
 This is a class for use with lcd4linux. Its task is simple.
 You want a Bar Widget to alternate between multiple sources
 of information (e.g. cycle through 5 disks to show their usage).
