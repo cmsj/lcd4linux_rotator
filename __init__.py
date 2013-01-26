@@ -9,8 +9,10 @@ by Chris Jones <cmsj@tenshu.net>
 Released under the GNU GPL v2 only.
 All Rights Reserved.
 """
-
-from lcd4linux_rotator import borg
+try:
+    from lcd4linux_rotator import borg
+except ImportError:
+    import borg
 
 class Rotator(borg.Borg):
     """
