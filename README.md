@@ -1,7 +1,5 @@
-lcd4linux rotator
-=================
-by Chris Jones <cmsj@tenshu.net>
---------------------------------
+#lcd4linux rotator
+##by Chris Jones <cmsj@tenshu.net>
 Released under the GNU GPL v2 only. All Rights Reserved.
 --------------------------------------------------------
 
