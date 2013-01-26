@@ -1,6 +1,6 @@
 #!/usr/bin/python
 """
-string_rotate
+lcd4linux_rotator
 
 This is a module for use with lcd4linux. It lets you rotate a label/widget pair
 between several sets of values.
@@ -10,7 +10,7 @@ Released under the GNU GPL v2 only.
 All Rights Reserved.
 """
 
-from string_rotate import borg
+from lcd4linux_rotator import borg
 
 class Rotator(borg.Borg):
     """
@@ -25,7 +25,7 @@ class Rotator(borg.Borg):
             class 'Text'
             update 1000
             width 4
-            expression python::exec('string_rotate', 'main', 'AllDisks key root=/,md0=/data,home=/home)
+            expression python::exec('lcd4linux_rotator', 'main', 'AllDisks key root=/,md0=/data,home=/home)
         }
         Widget BarAllDisks {
             class 'Bar'
@@ -34,18 +34,18 @@ class Rotator(borg.Borg):
             direction 'E'
             min 0
             max 100
-            expression path=python::exec('string_rotate', 'main', 'AllDisks value')
+            expression path=python::exec('lcd4linux_rotator', 'main', 'AllDisks value')
         }
 
     Now let's explain what that all meant.
 
     The first widget is a label that updates every 1000msec and gets its value
     from a python expression. That expression calls the "main" methid in this
-    module ("string_rotate") and passes in a string of data.
+    module ("lcd4linux_rotator") and passes in a string of data.
 
     The format of that string is: "NAME TYPE [KEY=VALUE,,,,]"
 
-    NAME - The name of this instance of string_rotate. You can have as many as
+    NAME - The name of this instance of lcd4linux_rotator. You can have as many as
     you want, just use the same name in the label and bar, so the module knows
     which one you want.
 

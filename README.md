@@ -9,7 +9,7 @@ fashion in your lcd4linux.conf:
           class 'Text'
           update 1000
           width 4
-          expression python::exec('string_rotate', 'main', 'AllDisks key root=/,md0=/data,home=/home)
+          expression python::exec('lcd4linux_rotator', 'main', 'AllDisks key root=/,md0=/data,home=/home)
       }
       Widget BarAllDisks {
           class 'Bar'
@@ -18,18 +18,18 @@ fashion in your lcd4linux.conf:
           direction 'E'
           min 0
           max 100
-          expression path=python::exec('string_rotate', 'main', 'AllDisks value')
+          expression path=python::exec('lcd4linux_rotator', 'main', 'AllDisks value')
       }
 
 Now let's explain what that all meant.
 
 The first widget is a label that updates every 1000msec and gets its value
 from a python expression. That expression calls the "main" methid in this
-module ("string_rotate") and passes in a string of data.
+module ("lcd4linux_rotator") and passes in a string of data.
 
 The format of that string is: "NAME TYPE [KEY=VALUE,,,,]"
 
-NAME - The name of this instance of string_rotate. You can have as many as
+NAME - The name of this instance of lcd4linux_rotator. You can have as many as
 you want, just use the same name in the label and bar, so the module knows
 which one you want.
 
